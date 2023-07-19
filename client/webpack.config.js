@@ -27,15 +27,24 @@ module.exports = () => {
         name: "Notes",
         short_name: "Notes",
         description: "Keep notes on important topics!",
-        background_color: "#7eb4e2",
-        theme_color: "#7eb4e2",
+        background_color: "red",
+        theme_color: "red",
+        fingerprints: false,
+        inject: true,
         start_url: "./",
         publicPath: "./",
-        icon: {
-          src: path.resolve("./src/images/logo.png"),
-          sizes: [96, 128, 192, 256, 384, 512],
-          destination: path.join("assets", "icons"),
-        },
+        icon: [
+          {
+            src: path.resolve("./src/images/logo.png"),
+            sizes: [96, 128, 192, 256, 384, 512],
+            destination: path.join("assets", "icons"),
+          },
+          {
+            src: path.resolve("./favicon.ico"),
+            sizes: [48],
+            type: "image/ico",
+          },
+        ],
       }),
     ],
 
@@ -44,6 +53,16 @@ module.exports = () => {
         {
           test: /\.css$/i,
           use: ["style-loader", "css-loader"],
+        },
+        {
+          test: /\.(txt|md|LICENSE)$/,
+          exclude: /(node_modules)/,
+          use: {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+            },
+          },
         },
         {
           test: /\.m?js$/,
