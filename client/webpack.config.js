@@ -20,7 +20,7 @@ module.exports = () => {
         title: "Notes List",
       }),
       new InjectManifest({
-        swSrc: "./src-sw.js",
+        swSrc: "./src-sw",
         swDest: "src-sw.js",
       }),
       new WebpackPwaManifest({
@@ -32,7 +32,7 @@ module.exports = () => {
         start_url: "./",
         publicPath: "./",
         icon: {
-          src: path.resolve("./favicon.ico"),
+          src: path.resolve("./src/images/logo.png"),
           sizes: [96, 128, 192, 256, 384, 512],
           destination: path.join("assets", "icons"),
         },
